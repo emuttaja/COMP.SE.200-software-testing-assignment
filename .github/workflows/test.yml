@@ -16,7 +16,7 @@ jobs:
         submodules: 'recursive'
 
     - name: build docker image
-      run: docker compose build
+      run: docker compose -f docker-compose.ci.yml build
 
     - name: run tests
-      run: docker compose run --rm node npm test
+      run: docker compose run -f docker-compose.ci.yml --rm node npm test
