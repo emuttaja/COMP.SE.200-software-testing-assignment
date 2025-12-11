@@ -20,7 +20,7 @@ jobs:
 
     - name: run tests with coverage
       run: |
-        docker compose -f docker-compose.ci.yml run node npm run test:coverage -- --coverage --coverageReporters=lcov
+        docker compose -f docker-compose.ci.yml run --name test-container node npm run test:coverage -- --coverage --coverageReporters=lcov
       continue-on-error: true
 
     - name: copy coverage from container
