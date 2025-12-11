@@ -18,5 +18,10 @@ jobs:
     - name: build docker image
       run: docker compose -f docker-compose.ci.yml build
 
-    - name: run tests
-      run: docker compose -f docker-compose.ci.yml run --rm node npm test
+    - name: run tests with coverage
+      run: docker compose -f docker-compose.ci.yml run --rm node npm run test:coverage -- --coverage --coverageReporters=lcov
+    
+    - name: upload coverage to coveralls
+      uses: coverallsapp/github-action@v2
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
