@@ -7,4 +7,4 @@ services:
     working_dir: /app
     stdin_open: true
     tty: true
-    
+    user: "1000:1000"
