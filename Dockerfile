@@ -5,7 +5,7 @@ WORKDIR /app
 
 # rootless
 RUN chown -R node:node /app
-USER nodeuser
+USER node
 
 COPY package*.json ./
 RUN npm install
