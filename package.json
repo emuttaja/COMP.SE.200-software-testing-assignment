@@ -1,16 +1,13 @@
 {
   "name": "app",
+  "type": "module",
   "version": "1.0.0",
   "description": "Build image: ``` docker compose build ``` Run interactively: ``` docker compose run --rm node bash ``` Run tests directly: ``` docker compose run --rm node npm test ```",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
-    "jest": "^27.5.1"
-  },
   "scripts": {
-    "test": "npx jest",
-    "test:coverage": "npx jest --coverage",
-    "test:watch": "npx jest --watch"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch"
   },
   "repository": {
     "type": "git",
@@ -22,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/emuttaja/COMP.SE.200-software-testing-assignment/issues"
   },
-  "homepage": "https://github.com/emuttaja/COMP.SE.200-software-testing-assignment#readme"
+  "homepage": "https://github.com/emuttaja/COMP.SE.200-software-testing-assignment#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
 }
