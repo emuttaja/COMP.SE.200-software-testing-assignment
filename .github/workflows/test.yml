@@ -1,0 +1,22 @@
+name: run tests
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: get code
+      uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+
+    - name: build docker image
+      run: docker compose build
+
+    - name: run tests
+      run: docer compose run --rm node npm test
