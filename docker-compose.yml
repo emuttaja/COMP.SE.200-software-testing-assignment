@@ -1,0 +1,10 @@
+services:
+  node:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    
