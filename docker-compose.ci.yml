@@ -2,5 +2,3 @@ services:
   node:
     build: .
     working_dir: /app
-    volumes:
-      - ./coverage:/app/coverage

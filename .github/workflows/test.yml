@@ -20,18 +20,13 @@ jobs:
 
     - name: run tests with coverage
       run: |
-        docker compose -f docker-compose.ci.yml run --rm node npm run test:coverage -- --coverage --coverageReporters=lcov
+        docker compose -f docker-compose.ci.yml run node npm run test:coverage -- --coverage --coverageReporters=lcov
       continue-on-error: true
 
-    - name: debug - check coverage
-      run: |
-        echo "=== Checking if coverage exists in container ==="
-        docker compose -f docker-compose.ci.yml run --rm node ls -la /app/coverage/
-        echo "=== Checking if coverage exists on host ==="
-        ls -la ./coverage/ || echo "Coverage dir not found on host"
-        echo "=== Contents of current directory ==="
-        ls -la
-    
+    - name: copy coverage from container
+      run: docker cp test-container:/app/coverage ./coverage
+      continue-on-error: true
+
     - name: upload coverage to coveralls
       uses: coverallsapp/github-action@v2
       with:
