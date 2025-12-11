@@ -21,7 +21,6 @@ jobs:
     - name: run tests with coverage
       run: |
         docker compose -f docker-compose.ci.yml run --rm node npm run test:coverage -- --coverage --coverageReporters=lcov
-        docker compose -f docker-compose.ci.yml run --rm -v $(pwd)/coverage:/tmp/coverage node cp -r /app/coverage /tmp/
       continue-on-error: true
     
     - name: upload coverage to coveralls
